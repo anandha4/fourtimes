@@ -15,9 +15,9 @@ before_install:
   - gcloud conf set compute/zone us-east1-c
   - gcloud container cluster  get-credentials jino
   - echo "$docker_password" | docker login -u "$docker_username" --password-stdin
-  - docker build -t jjino/development -f image/test/Dockerfile ./image/test
+  - docker build -t damocharms/development -f image/test/Dockerfile ./image/test
 script:
-  - docker run jjino/development echo "jino" -- --coverage
+  - docker run damocharms/development echo "jino" -- --coverage
 deploy:
   provider: script
     script: bash ./deploy.sh
